@@ -31,7 +31,7 @@ select distinct department,length(department) as department_length from worker;
 
 select firstname,salary,department 
 from
-(select *,row_number() over(partition by department order by salary desc) as rn from worker2) as tf 
+(select *,rank() over(partition by department order by salary desc) as rn from worker2) as tf 
 where tf.rn=1;
 
 
